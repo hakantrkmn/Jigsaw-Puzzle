@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a72f531ecb5446229384833f138de24, type: 3}
-  m_Name: New Level Datas
+  m_Name: LevelData
   m_EditorClassIdentifier: 
   levelSprites:
-  - {fileID: 21300000, guid: e82d17e2e69f347d5af31a7ba38d983d, type: 3}
+  - {fileID: 21300000, guid: 8651a3edaf09b4835ae40914bb1851fd, type: 3}
+  - {fileID: 21300000, guid: 6dfe9521eef43414d9ba03b6be642a48, type: 3}
+  playersPhoto: 
+  spriteIndex: 1

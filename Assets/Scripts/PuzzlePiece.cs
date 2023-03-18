@@ -21,6 +21,15 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
         puzzleBoard = GameObject.FindObjectOfType<PuzzleController>().transform;
     }
 
+    public void PlacePieceOnPos()
+    {
+        transform.parent = puzzleBoard;
+        transform.position = stat.correctPosition;
+        stat.isPlaced = true;
+        choosenPiece = false;
+        EventManager.PiecePlaced(this);
+    }
+
     private void OnValidate()
     {
         stat.correctPosition = transform.position;
@@ -32,8 +41,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
         {
             if (Vector3.Distance(transform.position, stat.correctPosition) < 50)
             {
-                transform.position = stat.correctPosition;
-                stat.isPlaced = true;
+                PlacePieceOnPos();
             }
         }
     }

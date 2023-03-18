@@ -5,4 +5,8 @@ using UnityEngine;
 public enum ButtonTypes
 {
     TakePhoto,
+    LevelButton,
+    MenuButton,
+    PlacePiece,
+    ShowPicture,
 }
