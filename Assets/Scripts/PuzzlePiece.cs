@@ -10,7 +10,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
 {
     public PuzzlePieceStats stat;
     public Image puzzleImage;
-    public Transform puzzleBoard;
+    Transform puzzleBoard;
 
     private bool choosenPiece;
 
@@ -19,6 +19,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
     {
         puzzleImage = transform.GetChild(0).GetComponent<Image>();
         puzzleBoard = GameObject.FindObjectOfType<PuzzleController>().transform;
+        
     }
 
     public void PlacePieceOnPos()
@@ -30,11 +31,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
         EventManager.PiecePlaced(this);
     }
 
-    private void OnValidate()
-    {
-        stat.correctPosition = transform.position;
-    }
-
+    
     private void Update()
     {
         if (choosenPiece)

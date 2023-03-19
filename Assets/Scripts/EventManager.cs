@@ -13,6 +13,7 @@ public static class EventManager
     public static Action LevelWin;
     public static Action PlaceRandomPiece;
     public static Action<bool> ShowPuzzle;
+    public static Action PuzzleReady;
 
 
 

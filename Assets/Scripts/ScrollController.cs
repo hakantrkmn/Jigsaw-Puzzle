@@ -9,22 +9,34 @@ public class ScrollController : MonoBehaviour
     public Transform content;
 
 
-    private void Start()
+    private void OnEnable()
+    {
+        EventManager.PuzzleReady += PuzzleReady;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.PuzzleReady -= PuzzleReady;
+    }
+
+    private void PuzzleReady()
     {
         SetScroll();
     }
 
+    private void Start()
+    {
+    }
 
-    public void SetScroll()
+
+    void SetScroll()
     {
         var pieces = EventManager.GetPuzzlePieces();
 
         foreach (var piece in pieces)
         {
             piece.transform.parent = content;
-            piece.transform.SetSiblingIndex(Random.Range(0,pieces.Count));
+            piece.transform.SetSiblingIndex(Random.Range(0, pieces.Count));
         }
-        
-        
     }
 }

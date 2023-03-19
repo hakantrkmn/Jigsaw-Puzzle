@@ -8,4 +8,5 @@ public class LevelDatas : ScriptableObject
     public List<Sprite> levelSprites;
     public List<byte> playersPhoto;
     public int spriteIndex;
+    public int puzzleSize;
 }

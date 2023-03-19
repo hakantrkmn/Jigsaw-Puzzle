@@ -30,7 +30,16 @@ public class ImagePicker : MonoBehaviour
             tex = new Texture2D(2, 2);
             tex.LoadImage(fileData); //..t$$anonymous$$s will auto-resize the texture dimensions.
             EventManager.GetLevelDatas().playersPhoto=(fileData.ToList());
-            SceneManager.LoadScene(1);
+            if (EventManager.GetLevelDatas().puzzleSize==0)
+            {
+                SceneManager.LoadScene(1);
+
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+
+            }
         }
 
     }

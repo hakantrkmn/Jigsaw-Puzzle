@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     public GameObject winPanel;
     public GameObject gamePanel;
+    public GameObject topPanel;
 
     private void OnEnable()
     {
@@ -20,6 +21,7 @@ public class UIController : MonoBehaviour
 
     private void LevelWin()
     {
+        topPanel.SetActive(false);
         gamePanel.SetActive(false);
         winPanel.SetActive(true);
     }
