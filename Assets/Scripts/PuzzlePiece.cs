@@ -47,13 +47,14 @@ public class PuzzlePiece : ItemBase, IInteractable
     public void OnPointerUp(PointerEventData eventData)
     {
         choosenPiece = false;
+        
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
         if (choosenPiece)
         {
-            transform.position = Input.mousePosition;
+            transform.position = Input.mousePosition + Vector3.forward;
         }
     }
 
