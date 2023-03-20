@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public LevelDatas levelData;
+    public LevelData levelData;
 
 
     private void OnEnable()
     {
-        EventManager.GetLevelDatas += GetLevelDatas;
+        //return leveldata if needed
+        EventManager.GetLevelData += GetLevelDatas;
     }
 
-    private LevelDatas GetLevelDatas()
+    private LevelData GetLevelDatas()
     {
         return levelData;
     }

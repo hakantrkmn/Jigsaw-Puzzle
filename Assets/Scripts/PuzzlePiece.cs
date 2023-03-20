@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler, IPointerDownHandler
+public class PuzzlePiece : ItemBase, IInteractable
 {
     public PuzzlePieceStats stat;
     public Image puzzleImage;
@@ -19,10 +19,23 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
     {
         puzzleImage = transform.GetChild(0).GetComponent<Image>();
         puzzleBoard = GameObject.FindObjectOfType<PuzzleController>().transform;
-        
     }
 
-    public void PlacePieceOnPos()
+
+    private void Update()
+    {
+        if (choosenPiece)
+        {
+            // if current pos close enough to right position, place it
+            if (Vector3.Distance(transform.position, stat.correctPosition) < 50)
+            {
+                PlaceItemOnPos();
+            }
+        }
+    }
+
+
+    public override void PlaceItemOnPos()
     {
         transform.parent = puzzleBoard;
         transform.position = stat.correctPosition;
@@ -30,19 +43,6 @@ public class PuzzlePiece : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler
         choosenPiece = false;
         EventManager.PiecePlaced(this);
     }
-
-    
-    private void Update()
-    {
-        if (choosenPiece)
-        {
-            if (Vector3.Distance(transform.position, stat.correctPosition) < 50)
-            {
-                PlacePieceOnPos();
-            }
-        }
-    }
-
 
     public void OnPointerUp(PointerEventData eventData)
     {

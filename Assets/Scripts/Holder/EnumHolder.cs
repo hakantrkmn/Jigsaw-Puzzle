@@ -10,3 +10,9 @@ public enum ButtonTypes
     PlacePiece,
     ShowPicture,
 }
+
+public enum PuzzleSizes
+{
+    Puzzle4x4,
+    Puzzle6x6,
+}

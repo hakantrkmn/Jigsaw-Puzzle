@@ -19,8 +19,9 @@ public class ImagePicker : MonoBehaviour
         EventManager.TakePhotoButton -= PickImage;
     }
 
-    public void PickImage()
-    {
+    public void PickImage() // work on editor, take picture from user. save this picture byte on leveldata.
+    {                       
+        #if UNITY_EDITOR
         string path = EditorUtility.OpenFilePanel("Overwrite with png", "", "png");
         Texture2D tex = null;
         byte[] fileData;
@@ -29,8 +30,8 @@ public class ImagePicker : MonoBehaviour
             fileData = File.ReadAllBytes(path);
             tex = new Texture2D(2, 2);
             tex.LoadImage(fileData); //..t$$anonymous$$s will auto-resize the texture dimensions.
-            EventManager.GetLevelDatas().playersPhoto=(fileData.ToList());
-            if (EventManager.GetLevelDatas().puzzleSize==0)
+            EventManager.GetLevelData().playersPhoto=(fileData.ToList());
+            if (EventManager.GetLevelData().puzzleSize==0)
             {
                 SceneManager.LoadScene(1);
 
@@ -41,6 +42,7 @@ public class ImagePicker : MonoBehaviour
 
             }
         }
+        #endif
 
     }
     

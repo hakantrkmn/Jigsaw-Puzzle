@@ -31,13 +31,23 @@ public class ButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     
     public void OnDropDownChanged(TMP_Dropdown dropDown)
     {
-        EventManager.GetLevelDatas().puzzleSize = dropDown.value;
+        // if dropdown value change, update leveldata 
+        if (dropDown.value==0)
+        {
+            EventManager.GetLevelData().puzzleSize = PuzzleSizes.Puzzle4x4;
+        }
+        else
+        {
+            EventManager.GetLevelData().puzzleSize = PuzzleSizes.Puzzle6x6;
+
+        }
     }
     public void LevelButtonClicked(int index)
     {
-        EventManager.GetLevelDatas().playersPhoto.Clear();
-        EventManager.GetLevelDatas().spriteIndex = index;
-        if (EventManager.GetLevelDatas().puzzleSize==0)
+        
+        EventManager.GetLevelData().playersPhoto.Clear();
+        EventManager.GetLevelData().spriteIndex = index;
+        if (EventManager.GetLevelData().puzzleSize==0)
         {
             SceneManager.LoadScene(1);
 
